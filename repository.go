@@ -20,14 +20,14 @@ func NewCustomerMongoRepository(session string) *MockMongoDBSession {
 	return &MockMongoDBSession{}
 }
 
-func (c *MockSqlDBSession) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
+func (sql *MockSqlDBSession) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
 	customerProfile := new(CustomerModel)
 	customerProfile.ID = "sql-id"
 	customerProfile.Name = "sql-name"
 	return customerProfile, nil
 }
 
-func (m *MockMongoDBSession) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
+func (mongo *MockMongoDBSession) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
 	customerProfile := new(CustomerModel)
 	customerProfile.ID = "mongo-id"
 	customerProfile.Name = "mongo-name"
