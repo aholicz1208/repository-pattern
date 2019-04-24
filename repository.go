@@ -4,7 +4,7 @@ type Repository interface {
 	GetCustomerProfileByID(customerID string) (CustomerModel, error)
 }
 
-type CustomerRepository struct {
+type MockSqlDBSession struct {
 	// todo keep db instance for separate code query logic
 }
 
@@ -12,15 +12,15 @@ type MockMongoDBSession struct {
 	// todo keep db instance for separate code query logic
 }
 
-func NewCustomerSQLRepository(session string) *CustomerRepository {
-	return &CustomerRepository{}
+func NewCustomerSQLRepository(session string) *MockSqlDBSession {
+	return &MockSqlDBSession{}
 }
 
 func NewCustomerMongoRepository(session string) *MockMongoDBSession {
 	return &MockMongoDBSession{}
 }
 
-func (c *CustomerRepository) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
+func (c *MockSqlDBSession) GetCustomerProfileByID(customerID string) (*CustomerModel, error) {
 	customerProfile := new(CustomerModel)
 	customerProfile.ID = "sql-id"
 	customerProfile.Name = "sql-name"
